@@ -22,20 +22,26 @@ const Header = () => {
             </button>
           </ActionGroup>
           <ActionGroup>
-            <Wrapper>
-              <button>
-                <User size={24} />
-              </button>
-            </Wrapper>
-            <SubscribeWrapper>
-              <Button>Subscribe</Button>
-              <span>Already a subscriber</span>
-            </SubscribeWrapper>
+            <button>
+              <User size={24} />
+            </button>
           </ActionGroup>
         </Row>
       </SuperHeader>
       <MainHeader>
+        <DesktopActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </DesktopActionGroup>
         <Logo />
+        <SubscribeWrapper>
+          <Button>Subscribe</Button>
+          <SubLink href='/'>Already a subscriber!</SubLink>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   );
@@ -48,29 +54,13 @@ const SuperHeader = styled.div`
   color: white;
 
   @media ${QUERIES.desktopAndUp} {
-    position: relative;
-    background: var(--color-gray-100);
-    color: var(--color-primary);
+    display: none;
   }
 `;
 
 const Row = styled(MaxWidthWrapper)`
   display: flex;
   justify-content: space-between;
-`;
-
-const Wrapper = styled.div`
-  @media ${QUERIES.desktopAndUp} {
-    display: none;
-  }
-`;
-
-const SubscribeWrapper = styled.div`
-  display: none;
-
-   @media ${QUERIES.desktopAndUp} {
-    display: flex;
-    flex-direction: column;
 `;
 
 const ActionGroup = styled.div`
@@ -86,6 +76,40 @@ const ActionGroup = styled.div`
   }
 `;
 
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+  }
+`;
+
+const SubscribeWrapper = styled.div`
+  display: none;
+
+  @media ${QUERIES.desktopAndUp} {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: end;
+    gap: 8px; */
+    display: revert;
+    position: relative;
+    justify-self: end;
+  }
+`;
+
+const SubLink = styled.a`
+  position: absolute;
+  width: 100%;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-gray-900);
+  font-style: italic;
+  text-decoration: underline;
+`;
+
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
@@ -93,8 +117,19 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.desktopAndUp} {
-    margin-top: -72px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: revert;
+    justify-items: start;
+    margin-top: 16px;
+    margin-bottom: 72px;
   }
 `;
 
