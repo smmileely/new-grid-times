@@ -22,9 +22,15 @@ const Header = () => {
             </button>
           </ActionGroup>
           <ActionGroup>
-            <button>
-              <User size={24} />
-            </button>
+            <Wrapper>
+              <button>
+                <User size={24} />
+              </button>
+            </Wrapper>
+            <SubscribeWrapper>
+              <Button>Subscribe</Button>
+              <span>Already a subscriber</span>
+            </SubscribeWrapper>
           </ActionGroup>
         </Row>
       </SuperHeader>
@@ -36,14 +42,35 @@ const Header = () => {
 };
 
 const SuperHeader = styled.div`
+  /* mobile first */
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media ${QUERIES.desktopAndUp} {
+    position: relative;
+    background: var(--color-gray-100);
+    color: var(--color-primary);
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
   display: flex;
   justify-content: space-between;
+`;
+
+const Wrapper = styled.div`
+  @media ${QUERIES.desktopAndUp} {
+    display: none;
+  }
+`;
+
+const SubscribeWrapper = styled.div`
+  display: none;
+
+   @media ${QUERIES.desktopAndUp} {
+    display: flex;
+    flex-direction: column;
 `;
 
 const ActionGroup = styled.div`
@@ -65,6 +92,10 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.desktopAndUp} {
+    margin-top: -72px;
+  }
 `;
 
 export default Header;
