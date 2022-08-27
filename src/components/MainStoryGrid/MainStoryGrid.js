@@ -61,6 +61,7 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+  display
 `;
 
 const StoryList = styled.div`
